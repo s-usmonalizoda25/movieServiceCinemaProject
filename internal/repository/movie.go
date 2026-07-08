@@ -34,3 +34,14 @@ func (r *MovieRepository) GetByID(ctx context.Context, id int64) (*models.Movie,
 	return movie, err
 }
 
+func (r *MovieRepository) Delete(ctx context.Context, id int64) error {
+	query := `DELETE FROM movies WHERE id = $1`
+	_, err := r.pool.Exec(ctx, query, id)
+	return err
+}
+
+func (r *MovieRepository) Update(ctx context.Context, m *models.Movie) error {
+	query := `UPDATE movies SET title=$1, description=$2, duration=$3, age_limit=$4, updated_at=NOW() WHERE id=$5`
+	_, err := r.pool.Exec(ctx, query, m.Title, m.Description, m.Duration, m.AgeLimit, m.ID)
+	return err
+}

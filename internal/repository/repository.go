@@ -1,14 +1,14 @@
 package repository
 
-import "github.com/jackc/pgx/v5/pgxpool"
+import (
+	"context"
 
-type Repository struct{
-	Movie *MovieRepository
+	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/models"
+)
+
+type MovieRepository interface {
+	Create(ctx context.Context, m *models.Movie) (int64, error)
+	GetByID(ctx context.Context, id int64) (*models.Movie, error)
+	Update(ctx context.Context, m *models.Movie) error
+	Delete(ctx context.Context, id int64) error
 }
-
-func New(pool *pgxpool.Pool) *Repository{
-	return &Repository{
-		Movie: NewMovieRepository(pool),
-	}
-}
-

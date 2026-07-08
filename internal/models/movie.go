@@ -9,6 +9,6 @@ type Movie struct {
 	Duration    int32
 	AgeLimit    int32
 	CreatedAt   time.Time
-	UodateAt    time.Time
+	UpdatedAt    time.Time
 }
 

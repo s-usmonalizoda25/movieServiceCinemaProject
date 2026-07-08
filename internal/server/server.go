@@ -59,7 +59,7 @@ func (s *Server) Update(ctx context.Context, req *pb.UpdateMovieRequest) (*pb.Up
 		AgeLimit:    req.AgeLimit,
 	})
 	if err != nil {
-		return &pb.UpdateMovieResponse{Code: 500, Message: "failed to update"}, s.handleError(errs.MsgFailedUpdate, err)
+		return nil, s.handleError(errs.MsgFailedUpdate, err)
 	}
 	return &pb.UpdateMovieResponse{Code: 200, Message: "success"}, nil
 }
@@ -67,7 +67,7 @@ func (s *Server) Update(ctx context.Context, req *pb.UpdateMovieRequest) (*pb.Up
 func (s *Server) Delete(ctx context.Context, req *pb.DeleteMovieRequest) (*pb.DeleteMovieResponse, error) {
 	err := s.svc.DeleteMovie(ctx, req.Id)
 	if err != nil {
-		return &pb.DeleteMovieResponse{Code: 500, Message: "failed to delete"}, s.handleError(errs.MsgFailedDelete, err)
+		return nil, s.handleError(errs.MsgFailedDelete, err)
 	}
 	return &pb.DeleteMovieResponse{Code: 200, Message: "success"}, nil
 }

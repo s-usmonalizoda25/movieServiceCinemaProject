@@ -72,6 +72,25 @@ func (s *Server) Delete(ctx context.Context, req *pb.DeleteMovieRequest) (*pb.De
 	return &pb.DeleteMovieResponse{Code: 200, Message: "success"}, nil
 }
 
+func (s *Server) List(ctx context.Context, req *pb.ListMovieRequest) (*pb.ListMovieResponse, error) {
+	movies, err := s.svc.GetAllMovies(ctx)
+	if err != nil {
+		return nil, s.handleError(errs.MsgFailedGet, err)
+	}
+
+	var pbMovies []*pb.GetMovieResponse
+	for _, m := range movies {
+		pbMovies = append(pbMovies, &pb.GetMovieResponse{
+			Id:          m.ID,
+			Title:       m.Title,
+			Description: m.Description,
+			Duration:    m.Duration,
+			AgeLimit:    m.AgeLimit,
+		})
+	}
+	return &pb.ListMovieResponse{Movies: pbMovies}, nil
+}
+
 func (s *Server) handleError(msg string, err error) error {
 	s.log.Error(msg, zap.Error(err))
 	return errs.MapToGRPC(err)

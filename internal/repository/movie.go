@@ -41,3 +41,23 @@ func (r *movieRepository) Delete(ctx context.Context, id int64) error {
 	_, err := r.pool.Exec(ctx, query, id)
 	return err
 }
+
+func (r *movieRepository) GetAll(ctx context.Context) ([]*models.Movie, error) {
+	query := `SELECT id, title, description, duration, age_limit, created_at, updated_at FROM movies`
+	rows, err := r.pool.Query(ctx, query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var movies []*models.Movie
+	for rows.Next() {
+		m := &models.Movie{}
+		err := rows.Scan(&m.ID, &m.Title, &m.Description, &m.Duration, &m.AgeLimit, &m.CreatedAt, &m.UpdatedAt)
+		if err != nil {
+			return nil, err
+		}
+		movies = append(movies, m)
+	}
+	return movies, nil
+}

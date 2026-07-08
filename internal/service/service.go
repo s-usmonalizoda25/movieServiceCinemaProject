@@ -15,6 +15,7 @@ type MovieService interface {
 	GetMovieByID(ctx context.Context, id int64) (*models.Movie, error)
 	UpdateMovie(ctx context.Context, m *models.Movie) error
 	DeleteMovie(ctx context.Context, id int64) error
+	GetAllMovies(ctx context.Context) ([]*models.Movie, error)
 }
 
 type Service struct {
@@ -82,4 +83,13 @@ func (s *Service) DeleteMovie(ctx context.Context, id int64) error {
 	}
 	s.log.Info("movie deleted", zap.Int64("id", id))
 	return nil
+}
+
+func (s *Service) GetAllMovies(ctx context.Context) ([]*models.Movie, error) {
+	movies, err := s.repo.GetAll(ctx)
+	if err != nil {
+		s.log.Error(errs.MsgFailedGet, zap.Error(err))
+		return nil, errs.ErrInternalServer
+	}
+	return movies, nil
 }

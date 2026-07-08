@@ -193,6 +193,7 @@ type GetMovieResponse struct {
 	Duration      int32                  `protobuf:"varint,4,opt,name=duration,proto3" json:"duration,omitempty"`
 	AgeLimit      int32                  `protobuf:"varint,5,opt,name=age_limit,json=ageLimit,proto3" json:"age_limit,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -265,6 +266,13 @@ func (x *GetMovieResponse) GetAgeLimit() int32 {
 func (x *GetMovieResponse) GetCreatedAt() string {
 	if x != nil {
 		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *GetMovieResponse) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
 	}
 	return ""
 }
@@ -587,7 +595,7 @@ const file_movie_movie_proto_rawDesc = "" +
 	"\x13CreateMovieResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"!\n" +
 	"\x0fGetMovieRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xb2\x01\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xd1\x01\n" +
 	"\x10GetMovieResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
@@ -595,7 +603,9 @@ const file_movie_movie_proto_rawDesc = "" +
 	"\bduration\x18\x04 \x01(\x05R\bduration\x12\x1b\n" +
 	"\tage_limit\x18\x05 \x01(\x05R\bageLimit\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\tR\tcreatedAt\"\x12\n" +
+	"created_at\x18\x06 \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\a \x01(\tR\tupdatedAt\"\x12\n" +
 	"\x10ListMovieRequest\"D\n" +
 	"\x11ListMovieResponse\x12/\n" +
 	"\x06movies\x18\x01 \x03(\v2\x17.movie.GetMovieResponseR\x06movies\"\x95\x01\n" +

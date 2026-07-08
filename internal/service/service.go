@@ -17,19 +17,19 @@ type MovieService interface {
 	DeleteMovie(ctx context.Context, id int64) error
 }
 
-type service struct {
+type Service struct {
 	repo repository.MovieRepository
 	log  *zap.Logger
 }
 
 func New(repo repository.MovieRepository, log *zap.Logger) MovieService {
-	return &service{
+	return &Service{
 		repo: repo,
 		log:  log,
 	}
 }
 
-func (s *service) CreateMovie(ctx context.Context, m *models.Movie) (int64, error) {
+func (s *Service) CreateMovie(ctx context.Context, m *models.Movie) (int64, error) {
 	allowedRatings := map[int32]bool{0: true, 6: true, 12: true, 16: true, 18: true, 21: true}
 
 	if !allowedRatings[m.AgeLimit] {
@@ -47,7 +47,7 @@ func (s *service) CreateMovie(ctx context.Context, m *models.Movie) (int64, erro
 
 	id, err := s.repo.Create(ctx, m)
 	if err != nil {
-		s.log.Error("failed to create movie in repository", zap.Error(err))
+		s.log.Error(errs.MsgFailedCreate, zap.Error(err))
 		return 0, fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
 
@@ -55,29 +55,29 @@ func (s *service) CreateMovie(ctx context.Context, m *models.Movie) (int64, erro
 	return id, nil
 }
 
-func (s *service) GetMovieByID(ctx context.Context, id int64) (*models.Movie, error) {
+func (s *Service) GetMovieByID(ctx context.Context, id int64) (*models.Movie, error) {
 	m, err := s.repo.GetByID(ctx, id)
 	if err != nil {
-		s.log.Error("failed to get movie from repository", zap.Int64("id", id), zap.Error(err))
+		s.log.Error(errs.MsgFailedGet, zap.Int64("id", id), zap.Error(err))
 		return nil, fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
 	return m, nil
 }
 
-func (s *service) UpdateMovie(ctx context.Context, m *models.Movie) error {
+func (s *Service) UpdateMovie(ctx context.Context, m *models.Movie) error {
 	err := s.repo.Update(ctx, m)
 	if err != nil {
-		s.log.Error("failed to update movie in repository", zap.Int64("id", m.ID), zap.Error(err))
+		s.log.Error(errs.MsgFailedUpdate, zap.Int64("id", m.ID), zap.Error(err))
 		return fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
 	s.log.Info("movie updated", zap.Int64("id", m.ID))
 	return nil
 }
 
-func (s *service) DeleteMovie(ctx context.Context, id int64) error {
+func (s *Service) DeleteMovie(ctx context.Context, id int64) error {
 	err := s.repo.Delete(ctx, id)
 	if err != nil {
-		s.log.Error("failed to delete movie from repository", zap.Int64("id", id), zap.Error(err))
+		s.log.Error(errs.MsgFailedDelete, zap.Int64("id", id), zap.Error(err))
 		return fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
 	s.log.Info("movie deleted", zap.Int64("id", id))

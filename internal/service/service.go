@@ -7,6 +7,7 @@ import (
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/models"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/repository"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/pkg/errs"
+	"go.uber.org/zap"
 )
 
 type MovieService interface {
@@ -18,10 +19,14 @@ type MovieService interface {
 
 type service struct {
 	repo repository.MovieRepository
+	log  *zap.Logger
 }
 
-func New(repo repository.MovieRepository) MovieService {
-	return &service{repo: repo}
+func New(repo repository.MovieRepository, log *zap.Logger) MovieService {
+	return &service{
+		repo: repo,
+		log:  log,
+	}
 }
 
 func (s *service) CreateMovie(ctx context.Context, m *models.Movie) (int64, error) {
@@ -42,15 +47,18 @@ func (s *service) CreateMovie(ctx context.Context, m *models.Movie) (int64, erro
 
 	id, err := s.repo.Create(ctx, m)
 	if err != nil {
+		s.log.Error("failed to create movie in repository", zap.Error(err))
 		return 0, fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
 
+	s.log.Info("movie successfully created", zap.Int64("id", id))
 	return id, nil
 }
 
 func (s *service) GetMovieByID(ctx context.Context, id int64) (*models.Movie, error) {
 	m, err := s.repo.GetByID(ctx, id)
 	if err != nil {
+		s.log.Error("failed to get movie from repository", zap.Int64("id", id), zap.Error(err))
 		return nil, fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
 	return m, nil
@@ -59,15 +67,19 @@ func (s *service) GetMovieByID(ctx context.Context, id int64) (*models.Movie, er
 func (s *service) UpdateMovie(ctx context.Context, m *models.Movie) error {
 	err := s.repo.Update(ctx, m)
 	if err != nil {
+		s.log.Error("failed to update movie in repository", zap.Int64("id", m.ID), zap.Error(err))
 		return fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
+	s.log.Info("movie updated", zap.Int64("id", m.ID))
 	return nil
 }
 
 func (s *service) DeleteMovie(ctx context.Context, id int64) error {
 	err := s.repo.Delete(ctx, id)
 	if err != nil {
+		s.log.Error("failed to delete movie from repository", zap.Int64("id", id), zap.Error(err))
 		return fmt.Errorf("%w: %v", errs.ErrInternalServer, err)
 	}
+	s.log.Info("movie deleted", zap.Int64("id", id))
 	return nil
 }

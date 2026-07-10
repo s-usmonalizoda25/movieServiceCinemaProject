@@ -1,4 +1,3 @@
-protoc -I=../protoCinemaProject/proto \ 
-    --go_out=./moviepb/v1 --go_opt=paths=source_relative \
-     --go-grpc_out=./moviepb/v1 --go-grpc_opt=paths=source_relative \
-     ../protoCinemaProject/proto/movie/movie.proto
+protoc --go_out=movieServiceCinemaProject \
+       --go-grpc_out=movieServiceCinemaProject \
+       protoCinemaProject/proto/movie/movie.proto

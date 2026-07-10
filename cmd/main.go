@@ -11,12 +11,12 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
+	moviepb "github.com/s-usmonalizoda25/movieServiceCinemaProject/genproto/movie"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/db"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/logger"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/repository"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/server"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/service"
-	moviepb "github.com/s-usmonalizoda25/movieServiceCinemaProject/moviepb/v1"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

@@ -2,17 +2,16 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v3.19.6
-// source: movie/movie.proto
+// source: protoCinemaProject/proto/movie/movie.proto
 
-package v1
+package moviepb
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -24,18 +23,17 @@ const (
 
 type CreateMovieRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Duration      int32                  `protobuf:"varint,4,opt,name=duration,proto3" json:"duration,omitempty"`
-	AgeLimit      int32                  `protobuf:"varint,5,opt,name=age_limit,json=ageLimit,proto3" json:"age_limit,omitempty"`
+	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Duration      int32                  `protobuf:"varint,3,opt,name=duration,proto3" json:"duration,omitempty"`
+	AgeLimit      int32                  `protobuf:"varint,4,opt,name=age_limit,json=ageLimit,proto3" json:"age_limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateMovieRequest) Reset() {
 	*x = CreateMovieRequest{}
-	mi := &file_movie_movie_proto_msgTypes[0]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +45,7 @@ func (x *CreateMovieRequest) String() string {
 func (*CreateMovieRequest) ProtoMessage() {}
 
 func (x *CreateMovieRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[0]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,14 +58,7 @@ func (x *CreateMovieRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMovieRequest.ProtoReflect.Descriptor instead.
 func (*CreateMovieRequest) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateMovieRequest) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateMovieRequest) GetTitle() string {
@@ -107,7 +98,7 @@ type CreateMovieResponse struct {
 
 func (x *CreateMovieResponse) Reset() {
 	*x = CreateMovieResponse{}
-	mi := &file_movie_movie_proto_msgTypes[1]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -119,7 +110,7 @@ func (x *CreateMovieResponse) String() string {
 func (*CreateMovieResponse) ProtoMessage() {}
 
 func (x *CreateMovieResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[1]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -132,7 +123,7 @@ func (x *CreateMovieResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMovieResponse.ProtoReflect.Descriptor instead.
 func (*CreateMovieResponse) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{1}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateMovieResponse) GetId() int64 {
@@ -151,7 +142,7 @@ type GetMovieRequest struct {
 
 func (x *GetMovieRequest) Reset() {
 	*x = GetMovieRequest{}
-	mi := &file_movie_movie_proto_msgTypes[2]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -163,7 +154,7 @@ func (x *GetMovieRequest) String() string {
 func (*GetMovieRequest) ProtoMessage() {}
 
 func (x *GetMovieRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[2]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -176,7 +167,7 @@ func (x *GetMovieRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMovieRequest.ProtoReflect.Descriptor instead.
 func (*GetMovieRequest) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{2}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetMovieRequest) GetId() int64 {
@@ -201,7 +192,7 @@ type GetMovieResponse struct {
 
 func (x *GetMovieResponse) Reset() {
 	*x = GetMovieResponse{}
-	mi := &file_movie_movie_proto_msgTypes[3]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -213,7 +204,7 @@ func (x *GetMovieResponse) String() string {
 func (*GetMovieResponse) ProtoMessage() {}
 
 func (x *GetMovieResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[3]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -226,7 +217,7 @@ func (x *GetMovieResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMovieResponse.ProtoReflect.Descriptor instead.
 func (*GetMovieResponse) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{3}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetMovieResponse) GetId() int64 {
@@ -286,7 +277,7 @@ type ListMovieRequest struct {
 
 func (x *ListMovieRequest) Reset() {
 	*x = ListMovieRequest{}
-	mi := &file_movie_movie_proto_msgTypes[4]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -298,7 +289,7 @@ func (x *ListMovieRequest) String() string {
 func (*ListMovieRequest) ProtoMessage() {}
 
 func (x *ListMovieRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[4]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -311,19 +302,19 @@ func (x *ListMovieRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMovieRequest.ProtoReflect.Descriptor instead.
 func (*ListMovieRequest) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{4}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{4}
 }
 
 type ListMovieResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Movies        []*GetMovieResponse    `protobuf:"bytes,1,rep,name=movies,proto3" json:"movies,omitempty"` // []GetMovieResponse
+	Movies        []*GetMovieResponse    `protobuf:"bytes,1,rep,name=movies,proto3" json:"movies,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListMovieResponse) Reset() {
 	*x = ListMovieResponse{}
-	mi := &file_movie_movie_proto_msgTypes[5]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -335,7 +326,7 @@ func (x *ListMovieResponse) String() string {
 func (*ListMovieResponse) ProtoMessage() {}
 
 func (x *ListMovieResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[5]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -348,7 +339,7 @@ func (x *ListMovieResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMovieResponse.ProtoReflect.Descriptor instead.
 func (*ListMovieResponse) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{5}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListMovieResponse) GetMovies() []*GetMovieResponse {
@@ -371,7 +362,7 @@ type UpdateMovieRequest struct {
 
 func (x *UpdateMovieRequest) Reset() {
 	*x = UpdateMovieRequest{}
-	mi := &file_movie_movie_proto_msgTypes[6]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -383,7 +374,7 @@ func (x *UpdateMovieRequest) String() string {
 func (*UpdateMovieRequest) ProtoMessage() {}
 
 func (x *UpdateMovieRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[6]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -396,7 +387,7 @@ func (x *UpdateMovieRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateMovieRequest.ProtoReflect.Descriptor instead.
 func (*UpdateMovieRequest) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{6}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UpdateMovieRequest) GetId() int64 {
@@ -444,7 +435,7 @@ type UpdateMovieResponse struct {
 
 func (x *UpdateMovieResponse) Reset() {
 	*x = UpdateMovieResponse{}
-	mi := &file_movie_movie_proto_msgTypes[7]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -456,7 +447,7 @@ func (x *UpdateMovieResponse) String() string {
 func (*UpdateMovieResponse) ProtoMessage() {}
 
 func (x *UpdateMovieResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[7]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -469,7 +460,7 @@ func (x *UpdateMovieResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateMovieResponse.ProtoReflect.Descriptor instead.
 func (*UpdateMovieResponse) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{7}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateMovieResponse) GetCode() int64 {
@@ -495,7 +486,7 @@ type DeleteMovieRequest struct {
 
 func (x *DeleteMovieRequest) Reset() {
 	*x = DeleteMovieRequest{}
-	mi := &file_movie_movie_proto_msgTypes[8]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -507,7 +498,7 @@ func (x *DeleteMovieRequest) String() string {
 func (*DeleteMovieRequest) ProtoMessage() {}
 
 func (x *DeleteMovieRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[8]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -520,7 +511,7 @@ func (x *DeleteMovieRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMovieRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMovieRequest) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{8}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DeleteMovieRequest) GetId() int64 {
@@ -540,7 +531,7 @@ type DeleteMovieResponse struct {
 
 func (x *DeleteMovieResponse) Reset() {
 	*x = DeleteMovieResponse{}
-	mi := &file_movie_movie_proto_msgTypes[9]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -552,7 +543,7 @@ func (x *DeleteMovieResponse) String() string {
 func (*DeleteMovieResponse) ProtoMessage() {}
 
 func (x *DeleteMovieResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_movie_movie_proto_msgTypes[9]
+	mi := &file_protoCinemaProject_proto_movie_movie_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -565,7 +556,7 @@ func (x *DeleteMovieResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMovieResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMovieResponse) Descriptor() ([]byte, []int) {
-	return file_movie_movie_proto_rawDescGZIP(), []int{9}
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteMovieResponse) GetCode() int64 {
@@ -582,17 +573,16 @@ func (x *DeleteMovieResponse) GetMessage() string {
 	return ""
 }
 
-var File_movie_movie_proto protoreflect.FileDescriptor
+var File_protoCinemaProject_proto_movie_movie_proto protoreflect.FileDescriptor
 
-const file_movie_movie_proto_rawDesc = "" +
+const file_protoCinemaProject_proto_movie_movie_proto_rawDesc = "" +
 	"\n" +
-	"\x11movie/movie.proto\x12\x05movie\"\x95\x01\n" +
-	"\x12CreateMovieRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1a\n" +
-	"\bduration\x18\x04 \x01(\x05R\bduration\x12\x1b\n" +
-	"\tage_limit\x18\x05 \x01(\x05R\bageLimit\"%\n" +
+	"*protoCinemaProject/proto/movie/movie.proto\x12\bmovie.v1\"\x85\x01\n" +
+	"\x12CreateMovieRequest\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1a\n" +
+	"\bduration\x18\x03 \x01(\x05R\bduration\x12\x1b\n" +
+	"\tage_limit\x18\x04 \x01(\x05R\bageLimit\"%\n" +
 	"\x13CreateMovieResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"!\n" +
 	"\x0fGetMovieRequest\x12\x0e\n" +
@@ -607,9 +597,9 @@ const file_movie_movie_proto_rawDesc = "" +
 	"created_at\x18\x06 \x01(\tR\tcreatedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\a \x01(\tR\tupdatedAt\"\x12\n" +
-	"\x10ListMovieRequest\"D\n" +
-	"\x11ListMovieResponse\x12/\n" +
-	"\x06movies\x18\x01 \x03(\v2\x17.movie.GetMovieResponseR\x06movies\"\x95\x01\n" +
+	"\x10ListMovieRequest\"G\n" +
+	"\x11ListMovieResponse\x122\n" +
+	"\x06movies\x18\x01 \x03(\v2\x1a.movie.v1.GetMovieResponseR\x06movies\"\x95\x01\n" +
 	"\x12UpdateMovieRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
@@ -623,51 +613,51 @@ const file_movie_movie_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"C\n" +
 	"\x13DeleteMovieResponse\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\x03R\x04code\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2\xc8\x02\n" +
-	"\fMovieService\x12?\n" +
-	"\x06Create\x12\x19.movie.CreateMovieRequest\x1a\x1a.movie.CreateMovieResponse\x12:\n" +
-	"\aGetByID\x12\x16.movie.GetMovieRequest\x1a\x17.movie.GetMovieResponse\x129\n" +
-	"\x04List\x12\x17.movie.ListMovieRequest\x1a\x18.movie.ListMovieResponse\x12?\n" +
-	"\x06Update\x12\x19.movie.UpdateMovieRequest\x1a\x1a.movie.UpdateMovieResponse\x12?\n" +
-	"\x06Delete\x12\x19.movie.DeleteMovieRequest\x1a\x1a.movie.DeleteMovieResponseB\x11Z\x0f./moviepb/v1;v1b\x06proto3"
+	"\amessage\x18\x02 \x01(\tR\amessage2\xe6\x02\n" +
+	"\fMovieService\x12E\n" +
+	"\x06Create\x12\x1c.movie.v1.CreateMovieRequest\x1a\x1d.movie.v1.CreateMovieResponse\x12@\n" +
+	"\aGetByID\x12\x19.movie.v1.GetMovieRequest\x1a\x1a.movie.v1.GetMovieResponse\x12?\n" +
+	"\x04List\x12\x1a.movie.v1.ListMovieRequest\x1a\x1b.movie.v1.ListMovieResponse\x12E\n" +
+	"\x06Update\x12\x1c.movie.v1.UpdateMovieRequest\x1a\x1d.movie.v1.UpdateMovieResponse\x12E\n" +
+	"\x06Delete\x12\x1c.movie.v1.DeleteMovieRequest\x1a\x1d.movie.v1.DeleteMovieResponseB\x1aZ\x18./genproto/movie;moviepbb\x06proto3"
 
 var (
-	file_movie_movie_proto_rawDescOnce sync.Once
-	file_movie_movie_proto_rawDescData []byte
+	file_protoCinemaProject_proto_movie_movie_proto_rawDescOnce sync.Once
+	file_protoCinemaProject_proto_movie_movie_proto_rawDescData []byte
 )
 
-func file_movie_movie_proto_rawDescGZIP() []byte {
-	file_movie_movie_proto_rawDescOnce.Do(func() {
-		file_movie_movie_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_movie_movie_proto_rawDesc), len(file_movie_movie_proto_rawDesc)))
+func file_protoCinemaProject_proto_movie_movie_proto_rawDescGZIP() []byte {
+	file_protoCinemaProject_proto_movie_movie_proto_rawDescOnce.Do(func() {
+		file_protoCinemaProject_proto_movie_movie_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_protoCinemaProject_proto_movie_movie_proto_rawDesc), len(file_protoCinemaProject_proto_movie_movie_proto_rawDesc)))
 	})
-	return file_movie_movie_proto_rawDescData
+	return file_protoCinemaProject_proto_movie_movie_proto_rawDescData
 }
 
-var file_movie_movie_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_movie_movie_proto_goTypes = []any{
-	(*CreateMovieRequest)(nil),  // 0: movie.CreateMovieRequest
-	(*CreateMovieResponse)(nil), // 1: movie.CreateMovieResponse
-	(*GetMovieRequest)(nil),     // 2: movie.GetMovieRequest
-	(*GetMovieResponse)(nil),    // 3: movie.GetMovieResponse
-	(*ListMovieRequest)(nil),    // 4: movie.ListMovieRequest
-	(*ListMovieResponse)(nil),   // 5: movie.ListMovieResponse
-	(*UpdateMovieRequest)(nil),  // 6: movie.UpdateMovieRequest
-	(*UpdateMovieResponse)(nil), // 7: movie.UpdateMovieResponse
-	(*DeleteMovieRequest)(nil),  // 8: movie.DeleteMovieRequest
-	(*DeleteMovieResponse)(nil), // 9: movie.DeleteMovieResponse
+var file_protoCinemaProject_proto_movie_movie_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_protoCinemaProject_proto_movie_movie_proto_goTypes = []any{
+	(*CreateMovieRequest)(nil),  // 0: movie.v1.CreateMovieRequest
+	(*CreateMovieResponse)(nil), // 1: movie.v1.CreateMovieResponse
+	(*GetMovieRequest)(nil),     // 2: movie.v1.GetMovieRequest
+	(*GetMovieResponse)(nil),    // 3: movie.v1.GetMovieResponse
+	(*ListMovieRequest)(nil),    // 4: movie.v1.ListMovieRequest
+	(*ListMovieResponse)(nil),   // 5: movie.v1.ListMovieResponse
+	(*UpdateMovieRequest)(nil),  // 6: movie.v1.UpdateMovieRequest
+	(*UpdateMovieResponse)(nil), // 7: movie.v1.UpdateMovieResponse
+	(*DeleteMovieRequest)(nil),  // 8: movie.v1.DeleteMovieRequest
+	(*DeleteMovieResponse)(nil), // 9: movie.v1.DeleteMovieResponse
 }
-var file_movie_movie_proto_depIdxs = []int32{
-	3, // 0: movie.ListMovieResponse.movies:type_name -> movie.GetMovieResponse
-	0, // 1: movie.MovieService.Create:input_type -> movie.CreateMovieRequest
-	2, // 2: movie.MovieService.GetByID:input_type -> movie.GetMovieRequest
-	4, // 3: movie.MovieService.List:input_type -> movie.ListMovieRequest
-	6, // 4: movie.MovieService.Update:input_type -> movie.UpdateMovieRequest
-	8, // 5: movie.MovieService.Delete:input_type -> movie.DeleteMovieRequest
-	1, // 6: movie.MovieService.Create:output_type -> movie.CreateMovieResponse
-	3, // 7: movie.MovieService.GetByID:output_type -> movie.GetMovieResponse
-	5, // 8: movie.MovieService.List:output_type -> movie.ListMovieResponse
-	7, // 9: movie.MovieService.Update:output_type -> movie.UpdateMovieResponse
-	9, // 10: movie.MovieService.Delete:output_type -> movie.DeleteMovieResponse
+var file_protoCinemaProject_proto_movie_movie_proto_depIdxs = []int32{
+	3, // 0: movie.v1.ListMovieResponse.movies:type_name -> movie.v1.GetMovieResponse
+	0, // 1: movie.v1.MovieService.Create:input_type -> movie.v1.CreateMovieRequest
+	2, // 2: movie.v1.MovieService.GetByID:input_type -> movie.v1.GetMovieRequest
+	4, // 3: movie.v1.MovieService.List:input_type -> movie.v1.ListMovieRequest
+	6, // 4: movie.v1.MovieService.Update:input_type -> movie.v1.UpdateMovieRequest
+	8, // 5: movie.v1.MovieService.Delete:input_type -> movie.v1.DeleteMovieRequest
+	1, // 6: movie.v1.MovieService.Create:output_type -> movie.v1.CreateMovieResponse
+	3, // 7: movie.v1.MovieService.GetByID:output_type -> movie.v1.GetMovieResponse
+	5, // 8: movie.v1.MovieService.List:output_type -> movie.v1.ListMovieResponse
+	7, // 9: movie.v1.MovieService.Update:output_type -> movie.v1.UpdateMovieResponse
+	9, // 10: movie.v1.MovieService.Delete:output_type -> movie.v1.DeleteMovieResponse
 	6, // [6:11] is the sub-list for method output_type
 	1, // [1:6] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -675,26 +665,26 @@ var file_movie_movie_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_movie_movie_proto_init() }
-func file_movie_movie_proto_init() {
-	if File_movie_movie_proto != nil {
+func init() { file_protoCinemaProject_proto_movie_movie_proto_init() }
+func file_protoCinemaProject_proto_movie_movie_proto_init() {
+	if File_protoCinemaProject_proto_movie_movie_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_movie_movie_proto_rawDesc), len(file_movie_movie_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_protoCinemaProject_proto_movie_movie_proto_rawDesc), len(file_protoCinemaProject_proto_movie_movie_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_movie_movie_proto_goTypes,
-		DependencyIndexes: file_movie_movie_proto_depIdxs,
-		MessageInfos:      file_movie_movie_proto_msgTypes,
+		GoTypes:           file_protoCinemaProject_proto_movie_movie_proto_goTypes,
+		DependencyIndexes: file_protoCinemaProject_proto_movie_movie_proto_depIdxs,
+		MessageInfos:      file_protoCinemaProject_proto_movie_movie_proto_msgTypes,
 	}.Build()
-	File_movie_movie_proto = out.File
-	file_movie_movie_proto_goTypes = nil
-	file_movie_movie_proto_depIdxs = nil
+	File_protoCinemaProject_proto_movie_movie_proto = out.File
+	file_protoCinemaProject_proto_movie_movie_proto_goTypes = nil
+	file_protoCinemaProject_proto_movie_movie_proto_depIdxs = nil
 }

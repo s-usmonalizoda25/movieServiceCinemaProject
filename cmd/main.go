@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	moviepb "github.com/s-usmonalizoda25/movieServiceCinemaProject/genproto/movie"
+	moviepb "github.com/s-usmonalizoda25/protoCinemaService/gen/movie"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/db"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/logger"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/repository"

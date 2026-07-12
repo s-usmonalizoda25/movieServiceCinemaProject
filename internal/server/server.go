@@ -5,7 +5,7 @@ import (
 
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/models"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/service"
-	pb "github.com/s-usmonalizoda25/movieServiceCinemaProject/genproto/movie"
+	pb "github.com/s-usmonalizoda25/protoCinemaService/gen/movie"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/pkg/errs"
 	"go.uber.org/zap"
 )

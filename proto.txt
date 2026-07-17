@@ -1,3 +1,0 @@
-protoc --go_out=movieServiceCinemaProject \
-       --go-grpc_out=movieServiceCinemaProject \
-       protoCinemaProject/proto/movie/movie.proto

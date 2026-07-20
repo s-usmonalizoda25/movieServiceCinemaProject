@@ -11,21 +11,22 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	moviepb "github.com/s-usmonalizoda25/protoCinemaService/gen/movie"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/db"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/logger"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/repository"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/server"
 	"github.com/s-usmonalizoda25/movieServiceCinemaProject/internal/service"
+	moviepb "github.com/s-usmonalizoda25/protoCinemaService/gen/movie"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
 
 func main() {
+
 	err := godotenv.Load("config/config.env")
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Println("config/config.env not found, using system environment variables")
 	}
 
 	myLogger := logger.New()
